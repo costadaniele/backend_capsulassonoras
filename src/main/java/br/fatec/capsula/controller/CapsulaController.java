@@ -66,7 +66,7 @@ public class CapsulaController implements ControllerInterface<Capsula> {
 	}
 	
 	@Override
-	@PostMapping
+	@PostMapping(value = "/add")
 	public ResponseEntity<Capsula> post(@Valid @RequestBody Capsula obj) {	
 		service.create(obj);
 		URI uri = ServletUriComponentsBuilder
@@ -77,7 +77,7 @@ public class CapsulaController implements ControllerInterface<Capsula> {
 
 	
 	@Override
-	@PutMapping
+	@PutMapping(value = "/update")
 	public ResponseEntity<?> put(@Valid @RequestBody Capsula obj) {
 		if (service.update(obj)) {
 			return ResponseEntity.ok(obj);
@@ -87,7 +87,7 @@ public class CapsulaController implements ControllerInterface<Capsula> {
 	
 
 	@Override
-	@DeleteMapping(value = "/{id}")
+	@DeleteMapping(value = "/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") Long id) {
 		if (service.delete(id)) {
 			return ResponseEntity.ok().build();

@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadService {
 
 	private final Path rootLocation;
-	private static final String location = "uploadDir";
+	private static final String location = "capsulaDir";
 
 	public UploadService() throws IOException {
 		rootLocation = Paths.get(location);
@@ -24,7 +24,9 @@ public class UploadService {
 			if (!Files.exists(rootLocation)) {
 				Files.createDirectories(rootLocation);
 			}
-		} catch (IOException e) {
+		} 
+		
+		catch (IOException e) {
 			throw new IOException("Não foi possível criar o diretório " + location);
 		}
 	}
